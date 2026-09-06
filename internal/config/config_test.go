@@ -2,7 +2,7 @@ package config
 
 import (
 	"os"
-	"path/filepath"
+	"runtime"
 	"testing"
 )
 
@@ -42,15 +42,16 @@ func TestConfigLoadAndSave(t *testing.T) {
 		t.Errorf("expected reloaded base URL 'http://localhost:8000/v1', got '%s'", reloaded.AI.BaseURL)
 	}
 
-	// Verify file permissions (0600)
-	configPath, _ := GetConfigPath()
-	info, err := os.Stat(configPath)
-	if err != nil {
-		t.Fatalf("stat on config file failed: %v", err)
+	// Verify file permissions (0600 on POSIX platforms)
+	if runtime.GOOS != "windows" {
+		configPath, _ := GetConfigPath()
+		info, err := os.Stat(configPath)
+		if err != nil {
+			t.Fatalf("stat on config file failed: %v", err)
+		}
+		perm := info.Mode().Perm()
+		if perm != 0600 {
+			t.Errorf("expected file permissions 0600, got %o", perm)
+		}
 	}
-	perm := info.Mode().Perm()
-	if perm != 0600 {
-		t.Errorf("expected file permissions 0600, got %o", perm)
-	}
-	_ = filepath.Base(configPath)
 }
