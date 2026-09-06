@@ -1,165 +1,182 @@
 <div align="center">
 
-# gt ◈ Gito
+# `gt`
 
-**The premium interactive terminal interface for Git.**
+### Git without the syntax headache.
 
-Type `gt` and manage your Git repository with speed, clarity, and safety.
+An ultra-fast, keyboard-driven terminal interface with automatic AI commit messages, safe branch navigation, and zero learning curve.
 
-[Installation](#installation) • [Quick Start](#quick-start) • [Workflows](#core-workflows) • [Keybindings](#keybindings) • [AI Integration](#ai-integration)
+```bash
+# Install on macOS & Linux
+curl -fsSL https://raw.githubusercontent.com/mijanlab/gito/main/install.sh | sh
+```
+
+```powershell
+# Install on Windows (PowerShell)
+irm https://raw.githubusercontent.com/mijanlab/gito/main/install.ps1 | iex
+```
+
+<br />
+
+```text
+╭──────────────────────────────────────────────────────────────╮
+│  ◈ Gito                                             v0.0.5   │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  my-project                                                  │
+│  └─ main                                      ● Clean        │
+│                                                              │
+│  What would you like to do?                                  │
+│                                                              │
+│  ❯  ↑  Push                                                  │
+│     ↓  Pull                                                  │
+│     ◇  Commit                                                │
+│     ⎇  Branch                                                │
+│     ◌  Changes                                               │
+│     ◷  History                                               │
+│     ✦  AI Settings                                           │
+│                                                              │
+├──────────────────────────────────────────────────────────────┤
+│  ↑↓ Navigate   Enter Select   Esc Back   q Quit              │
+╰──────────────────────────────────────────────────────────────╯
+```
 
 </div>
 
 ---
 
-## Overview
+## ⚡ 10-Second Quickstart
 
-**gt** (**Gito**) is built for developers who want a fast, keyboard-first, and context-aware interface for Git without remembering obscure CLI flags.
-
-Type `gt` in any terminal:
+Just type **`gt`** inside any project:
 
 ```bash
 gt
 ```
 
----
-
-## Core Workflows
-
-- **Push** — Automatic remote tracking detection, one-click `Push & set upstream`, and protected `--force-with-lease` confirmations.
-- **Pull** — Clean pulls with explicit guardrails against accidental branch cross-merging.
-- **Commit** — Interactive staging review, custom message editor, and AI commit message generation.
-- **Branch** — Instant creation (`git switch -c`), branch switching, and safe deletion (`-d`) with unmerged commit warnings.
-- **Changes** — Scrollable syntax-colored diff viewer with addition/deletion statistics.
-- **History** — Visual commit timeline, detailed commit inspector, and one-click commit reverts.
+That's it. No complicated arguments, no syntax to memorize.
 
 ---
 
-## Installation
+## 🚀 Fast CLI Shortcuts
 
-### 🍎 macOS & 🐧 Linux
+Prefer quick terminal commands? `gt` handles the entire Git lifecycle with automatic AI intelligence:
 
-#### Option 1: One-Line Installer (Recommended)
 ```bash
+# 1. Commit all changes with AI and push in one step
+gt push
+
+# 2. Pull newest changes safely without merge accidents
+gt pull
+
+# 3. View a clean, human-friendly status of your repository
+gt status
+
+# 4. Self-update to the latest version anytime
+gt update
+```
+
+---
+
+## ✨ Why `gt`?
+
+| What you want to do | Traditional Git | With `gt` |
+|---|---|---|
+| **Push a new branch** | `git push -u origin feature/login` | `gt push` *(automatically sets upstream)* |
+| **Commit with AI** | Write manual message or configure complex hooks | `gt` → `Commit` → `✦ AI Generate` |
+| **Pull another branch safely** | `git checkout feat && git pull && git checkout main` | `gt` → `Pull` *(guards against accidental merges)* |
+| **Undo / Revert a commit** | `git log` → copy SHA → `git revert <SHA>` | `gt` → `History` → select commit → `Revert` |
+| **Review changes** | `git diff` / `git status` | `gt` → `Changes` *(scrollable color diff)* |
+
+---
+
+## 📦 Installation Options
+
+<details open>
+<summary><b>🍎 macOS</b></summary>
+
+```bash
+# One-line installer (Recommended)
 curl -fsSL https://raw.githubusercontent.com/mijanlab/gito/main/install.sh | sh
-```
-*Installs both `gt` and `gito` to your PATH.*
 
-#### Option 2: Go Install
-```bash
+# Or via Go
 go install github.com/mijanlab/gito/cmd/gt@latest
 ```
+</details>
 
-#### Option 3: Homebrew
+<details open>
+<summary><b>🐧 Linux</b></summary>
+
 ```bash
-brew install mijanlab/tap/gito
+# One-line installer (Ubuntu, Debian, Fedora, Arch, etc.)
+curl -fsSL https://raw.githubusercontent.com/mijanlab/gito/main/install.sh | sh
+
+# Or via Go
+go install github.com/mijanlab/gito/cmd/gt@latest
 ```
+</details>
 
----
+<details open>
+<summary><b>🪟 Windows</b></summary>
 
-### 🪟 Windows
-
-#### Option 1: One-Line PowerShell (Recommended)
 ```powershell
+# Open PowerShell and run:
 irm https://raw.githubusercontent.com/mijanlab/gito/main/install.ps1 | iex
-```
 
-#### Option 2: Scoop
-```powershell
-scoop bucket add mijanlab https://github.com/mijanlab/scoop-bucket
-scoop install gito
-```
-
-#### Option 3: Go Install
-```powershell
+# Or via Go
 go install github.com/mijanlab/gito/cmd/gt@latest
 ```
+</details>
 
 ---
 
-## Quick Start
+## ⌨️ Keyboard Controls
 
-Open any repository in your terminal and type:
+Navigation in `gt` is built entirely around muscle memory:
 
-```bash
-gt
-```
-
-*(You can also use `gito`)*
-
----
-
-## Commands
-
-| Command | Description |
-|---|---|
-| `gt` | Launch interactive Git TUI in current directory |
-| `gt version` | Display current version and check for available updates |
-| `gt update` | Check for updates and self-upgrade to the latest version |
-| `gt uninstall` | Uninstall binary from your system (add `--purge` to delete config) |
-| `gt --help` | Show CLI usage and available options |
+| Keys | Description |
+|:---:|---|
+| **`↑` / `k`** | Move cursor up |
+| **`↓` / `j`** | Move cursor down |
+| **`Enter`** | Select / Confirm action |
+| **`Esc`** | Go back to previous screen / Cancel |
+| **`PgUp` / `PgDn`** | Scroll through file diffs |
+| **`r`** | Refresh repository state |
+| **`q`** | Quit |
 
 ---
 
-## Keybindings
+## ✦ Optional AI Commit Generation
 
-| Key | Action |
-|---|---|
-| `↑` / `k` | Navigate up |
-| `↓` / `j` | Navigate down |
-| `Enter` | Select / Confirm |
-| `Esc` | Go back / Cancel |
-| `PgUp` / `PgDn` | Scroll diff viewer |
-| `r` | Refresh repository state |
-| `q` / `Ctrl+C` | Quit |
-| `?` | Show help |
+`gt` works **100% offline** with zero configuration required.
 
----
+If you want automatic AI commit messages, connect it to your local **Ollama** model or any OpenAI-compatible API:
 
-## AI Integration (Optional)
-
-`gt` includes optional AI commit message generation powered by **any OpenAI-compatible API**.
-
-- **Ollama** (`http://localhost:11434/v1` with `qwen2.5-coder:7b`)
-- **LM Studio** / **vLLM** / **LocalAI**
-- **OpenAI** / **OpenRouter** / **Groq**
-
-Configure interactively inside the TUI under **AI Settings** (`✦`) or in your configuration file:
-
-```yaml
-ai:
-  enabled: true
-  provider: ollama
-  base_url: http://localhost:11434/v1
-  api_key: ollama
-  model: qwen2.5-coder:7b
-```
-
-### Config Locations
-- **macOS**: `~/Library/Application Support/gito/config.yaml`
-- **Linux**: `~/.config/gito/config.yaml`
-- **Windows**: `%APPDATA%\gito\config.yaml`
+1. Press `✦ AI Settings` in the main menu (or run `gt`).
+2. Point it to your preferred model:
+   - **Local Ollama** *(Zero-cost, offline)*: `http://localhost:11434/v1` with model `qwen2.5-coder:7b`
+   - **LM Studio / vLLM / LocalAI**
+   - **OpenAI / OpenRouter / Groq**
 
 ---
 
-## Build from Source
+## 🛠️ Commands Reference
 
-```bash
-git clone https://github.com/mijanlab/gito.git
-cd gito
+```text
+Usage:
+  gt [command] [flags]
 
-# Build both 'gt' and 'gito' binaries
-make build
-
-# Install globally to /usr/local/bin
-make install
-
-# Run test suite
-make test
+Commands:
+  gt              Open the interactive visual interface
+  gt push [-y]    Analyze changes with AI, commit, and push to remote
+  gt pull         Pull latest changes safely from upstream
+  gt status       Show concise repository state
+  gt version      Check current version and available updates
+  gt update       Auto-upgrade to the latest release
+  gt uninstall    Remove gt from your machine
 ```
 
 ---
 
-## License
+## 📄 License
 
 MIT License © 2026 Gito Contributors.
