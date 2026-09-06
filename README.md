@@ -31,7 +31,7 @@ irm https://raw.githubusercontent.com/mijanlab/gito/main/install.ps1 | iex
 │  ❯  ↑  Push                                                  │
 │     ↓  Pull                                                  │
 │     ◇  Commit                                                │
-│     ⎇  Branch                                                │
+│     ⎇  Branch                                               │
 │     ◌  Changes                                               │
 │     ◷  History                                               │
 │     ✦  AI Settings                                           │
