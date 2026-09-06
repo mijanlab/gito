@@ -1,0 +1,8 @@
+# Root binaries
+/gito
+/gt
+/dist/
+
+# OS metadata
+.DS_Store
+Thumbs.db
